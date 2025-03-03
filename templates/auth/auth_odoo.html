@@ -1,0 +1,72 @@
+{% extends "auth/index.html" %}
+
+{% block content %}
+    <div class="container auth">
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <h4>Login to Odoo Server (1/2)</h4>
+            </div>
+            <div class="form-body column is-4 is-offset-4">
+                <form method="POST" action="/login">
+                    <div class="field">
+
+                        <div class="control">
+                            <label for="URL">URL</label>
+
+                            <input class="input is-large" type="text" name="url"
+                                   placeholder="Odoo URL e.g. https://db.odoo.com"
+                                   value="http://localhost:8090"
+                                   autofocus="">
+                        </div>
+                    </div>
+
+                    <div class="field">
+                        <div class="control">
+                            <label for="Database">Database</label>
+                            <input class="input is-large" type="text" name="db"
+                                   placeholder="Odoo Database e.g. Production"
+                                   value="zpl2"
+                                   autofocus="">
+                        </div>
+                    </div>
+
+                    <div class="field">
+                        <div class="control">
+                            <label for="username">Username</label>
+                            <input class="input is-large" type="text"
+                                   name="username"
+                                   placeholder="Odoo Account Username"
+                                   value="admin"
+                                   autofocus="">
+                        </div>
+                    </div>
+
+                    <div class="field">
+                        <div class="control">
+                            <label for="password">Password</label>
+                            <input class="input is-large"
+                                   type="password"
+                                   value="admin"
+                                   name="password" placeholder="Odoo User Password">
+                        </div>
+                    </div>
+                    <button class="btn-primary btn is-block is-info is-large is-fullwidth">Next</button>
+                </form>
+                <div class="col-12 error-message">
+                    {% with errors = get_flashed_messages(category_filter=["error"]) %}
+                        {% if errors %}
+                            <div class="error-container">
+                                <ul>
+                                    {%- for msg in errors %}
+                                        <li>{{ msg }}</li>
+                                    {% endfor -%}
+                                </ul>
+                            </div>
+                        {% endif %}
+                    {% endwith %}
+                </div>
+            </div>
+
+        </div>
+    </div>
+{% endblock %}

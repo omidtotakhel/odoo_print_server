@@ -1,0 +1,66 @@
+{% extends "settings/index.html" %}
+
+{% block content %}
+
+
+    <script>
+
+
+        function onClick(row) {
+            let id = row.getAttribute("data-id");
+            window.location.href = `/new_server?identifier=${id}`
+        }
+
+    </script>
+
+    <section>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="view-header col-md-12">
+                    <h3>Servers</h3>
+                    <div class="row">
+                        <a href="/new_server" class="btn btn-primary">Create</a>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <table class="list table table-condensed">
+                        <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>location</th>
+                            <th>Identifier</th>
+                            <th>Active</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% if servers %}
+                            {% for server in servers %}
+                                <tr onclick="onClick(this)" data-id="{{ server.identifier }}">
+                                    <td>{{ server.name }}</td>
+                                    <td>{{ server.location }}</td>
+                                    <td>{{ server.identifier }}</td>
+                                    <td>
+                                        Status: {{ "Active" if server.active else "Inactive" }}
+                                        <a href="{{ url_for('main.toggle_server', identifier=server.identifier) }}">
+                                            Toggle
+                                        </a>
+                                    </td>
+                                    <td>
+
+                                        <a href="{{ url_for('main.unlink_server', identifier=server.identifier) }}">
+                                            <span class="fa fa-trash"/>
+                                        </a>
+                                    </td>
+
+                                </tr>
+                            {% endfor %}
+                        {% endif %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+{% endblock %}

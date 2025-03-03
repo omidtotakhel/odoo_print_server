@@ -1,0 +1,41 @@
+{% extends "printing/index.html" %}
+
+{% block content %}
+
+    <section>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="view-header col-md-12">
+                    <h3>Printers</h3>
+                </div>
+                <div class="col-md-12">
+                    <table class="list table table-condensed">
+                        <thead>
+                        <tr>
+                            <th>Printer</th>
+                            <th>Model</th>
+                            <th>Location</th>
+                            <th>Status</th>
+                        </tr>
+                        </thead>
+
+                        <tbody>
+                        {% if printers %}
+                            {% for printer in printers %}
+                                <tr>
+                                    <td>{{ printer.name }}</td>
+                                    <td>{{ printer.model }}</td>
+                                    <td>{{ printer.location }}</td>
+                                    <td>{{ printer.status }}</td>
+                                </tr>
+                            {% endfor %}
+                        {% endif %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+{% endblock %}

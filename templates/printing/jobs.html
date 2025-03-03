@@ -1,0 +1,46 @@
+
+
+{% extends "printing/index.html" %}
+
+{% block content %}
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="form-header col-md-12">
+                <h3>Server Jobs</h3>
+            </div>
+            <table class="col-md-12 table table-condensed table-striped">
+                <tr>
+                    <th>Date</th>
+                    <th>Job ID</th>
+                    <th>Job Type</th>
+                    <th>Printer</th>
+                    <th>Res</th>
+                    <th>Model</th>
+                    <th>State</th>
+                </tr>
+                {% if jobs %}
+                    {% for job in jobs %}
+                        <tr>
+                            <td>{{ job.create_date }}</td>
+                            <td>{{ job.id }}</td>
+                            <td>{{ job.job_type }}</td>
+                            <td>{{ job.printer_name }}</td>
+                            <td>{{ job.res_ids }}</td>
+                            <td>{{ job.res_model }}</td>
+                            <td style="text-transform: capitalize;">{{ job.state }}
+
+                                {% if job.state != 'done' %}
+                                    <p>
+                                        {{ job.reason }}
+                                    </p>
+                                {% endif %}
+                            </td>
+                        </tr>
+                    {% endfor %}
+                {% endif %}
+            </table>
+        </div>
+    </div>
+
+{% endblock %}

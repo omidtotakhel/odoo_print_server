@@ -1,0 +1,58 @@
+{% extends "settings/index.html" %}
+
+{% block content %}
+
+    <section>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="view-header col-md-12">
+                    <h3>Users</h3>
+                </div>
+                <div class="col-md-12">
+                    <table class="list table table-condensed">
+                        <thead>
+                        <tr>
+                            <th>User</th>
+                            <th>ODoo DB</th>
+                            <th>ODOo URL</th>
+                            <th>Cups URL</th>
+                            <th>Cups Port</th>
+                            <th>Cups User</th>
+                            <th>State</th>
+                            <th></th>
+                        </tr>
+                        </thead>
+
+                        <tbody>
+                        {% if users %}
+                            {% for user in users %}
+                                <tr>
+                                    <td>{{ user.username }}</td>
+                                    <td>{{ user.db }}</td>
+                                    <td>{{ user.url }}</td>
+                                    <td>{{ user.cups_url }}</td>
+                                    <td>{{ user.cups_port }}</td>
+                                    <td>{{ user.cups_username }}</td>
+                                    <td>
+                                        Status: {{ "Active" if user.active else "Inactive" }}
+                                        <a href="{{ url_for('main.toggle', user_id=user.id) }}">
+                                            Toggle
+                                        </a>
+                                    </td>
+                                    <td>
+
+                                        <a href="{{ url_for('main.unlink_user', user_id=user.id) }}">
+                                            <span class="fa fa-trash"/>
+                                        </a>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                        {% endif %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+
+{% endblock %}

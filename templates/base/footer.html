@@ -1,0 +1,27 @@
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <p>
+                    {% if g.odoo %}
+                        <strong>Odoo:</strong>
+                        <span>{{ g.odoo.url }}</span>
+                        <span>@ {{ g.odoo.db }}</span>
+                    {% endif %}
+                </p>
+            </div>
+            <div class="col-md-6">
+                <p>
+                    {% if g.cups %}
+                        <strong>Cups</strong>
+                        <span>{{ g.cups.url }}</span>
+                        <span>@ {{ g.cups.port }}</span>
+                        <span>as {{ g.cups.user }}</span>
+                    {% endif %}
+                </p>
+            </div>
+        </div>
+    </div>
+
+
+</footer>

@@ -1,0 +1,31 @@
+{% extends "base/frontend.html" %}
+
+{% block content %}
+<div class="container auth">
+    <div class="row">
+        <div class="form-header column is-offset-4 is-4">
+            <div class="logo text-center">
+                <img src="static/img/odoo.png" width="40%" alt="logo"/>
+                <h3>Print Server</h3>
+                <p>by Bista Solutions</p>
+
+                <h4>Server Error</h4>
+            </div>
+            <div class="col-12 error-message" style="margin-bottom: 40px">
+                {% with errors = get_flashed_messages(category_filter=["error"]) %}
+                {% if errors %}
+                <div class="error-container">
+                    <ul>
+                        {%- for msg in errors %}
+                        <li>{{ msg }}</li>
+                        {% endfor -%}
+                    </ul>
+                </div>
+                {% endif %}
+                {% endwith %}
+            </div>
+        </div>
+    </div>
+
+</div>
+{% endblock %}

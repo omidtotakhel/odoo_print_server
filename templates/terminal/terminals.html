@@ -1,0 +1,43 @@
+{% extends "terminal/index.html" %}
+
+{% block content %}
+
+    <section>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="view-header col-md-12">
+                    <h3>Terminals</h3>
+                </div>
+                <div class="col-md-12">
+                    <table class="list table table-condensed">
+                        <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Location</th>
+                            <th>IP Address</th>
+                            <th>Port</th>
+                            <th>State</th>
+                        </tr>
+                        </thead>
+
+                        <tbody>
+                        {% if terminals %}
+                            {% for terminal in terminals %}
+                                <tr>
+                                    <td>{{ terminal.name }}</td>
+                                    <td>{{ terminal.location_name }}</td>
+                                    <td>{{ terminal.ip }}</td>
+                                    <td>{{ terminal.port }}</td>
+                                    <td>{{ terminal.state }}</td>
+                                    <td></td>
+                                </tr>
+                            {% endfor %}
+                        {% endif %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+
+{% endblock %}

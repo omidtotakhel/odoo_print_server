@@ -1,0 +1,73 @@
+{% extends "auth/index.html" %}
+
+
+{% block content %}
+    <div class="container auth">
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <h4>Login to CUPS Server (2/2)</h4>
+            </div>
+            <div class="form-body column is-4 is-offset-4">
+                <form method="POST" action="/login_cups">
+                    <div class="field">
+                        <div class="control">
+                            <label for="url">URL</label>
+                            <input class="input is-large" type="text" name="url"
+                                   placeholder="Odoo URL e.g. 192.168.1.100"
+                                   value="localhost"
+                                   autofocus="">
+                        </div>
+                    </div>
+
+                    <div class="field">
+                        <div class="control">
+                            <label for="port">Port</label>
+                            <input class="input is-large" type="text" name="port"
+                                   placeholder="default 631"
+                                   value="631"
+                                   autofocus="">
+                        </div>
+                    </div>
+
+                    <div class="field">
+                        <div class="control">
+                            <label for="username">Username</label>
+                            <input class="input is-large"
+                                   type="text"
+                                   name="username"
+                                   placeholder="Cups Username"
+                                   value="omidtotakhel"
+                                   autofocus="">
+                        </div>
+                    </div>
+
+                    <div class="field">
+                        <div class="control">
+                            <label for="password">Password</label>
+                            <input class="input is-large"
+                                   type="password"
+                                   value="Genius2013"
+                                   name="password" placeholder="Cups User Password">
+                        </div>
+                    </div>
+                    <button class="btn-primary btn is-block is-info is-large is-fullwidth">Connect</button>
+                </form>
+                <div class="col-12 error-message">
+                    {% with errors = get_flashed_messages(category_filter=["error"]) %}
+                        {% if errors %}
+                            <div class="error-container">
+                                <ul>
+                                    {%- for msg in errors %}
+                                        <li>{{ msg }}</li>
+                                    {% endfor -%}
+                                </ul>
+                            </div>
+                        {% endif %}
+                    {% endwith %}
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+{% endblock %}

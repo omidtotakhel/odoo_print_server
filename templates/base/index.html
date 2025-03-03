@@ -1,0 +1,31 @@
+{% extends "base/frontend.html" %}
+
+{% block base_content %}
+
+    <section class="page-index">
+        <div class="apps-list">
+            <ul>
+                <li>
+                    <a href="/printing">
+                        <span class="fa fa-print fa-2x"></span>
+                        <span>Printing</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/terminals">
+                        <span class="fa fa-credit-card-alt fa-2x"></span>
+                        <span>Terminals</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/settings">
+                        <span class="fa fa-cog fa-2x"></span>
+                        <span>Settings</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </section>
+
+
+{% endblock %}

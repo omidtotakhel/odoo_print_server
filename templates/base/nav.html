@@ -1,0 +1,24 @@
+<nav>
+    <div class="wrapper">
+        <div class="menu_wrapper">
+            <a href="/">
+                <span class="fa fa-bars"></span>
+            </a>
+        </div>
+        <div class="submenu_wrapper">
+            {% block nav %}
+
+            {% endblock %}
+        </div>
+    </div>
+    <div class="user-wrapper text-right">
+        <div class="user">
+            {% if g.user %}
+                <h4>
+                    <b>{{ g.user.username }}</b>
+                </h4>
+                <p>{{ g.user.login }}</p>
+            {% endif %}
+        </div>
+    </div>
+</nav>
